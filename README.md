@@ -4,7 +4,7 @@ The objective of this API is to make NASA data, including imagery, eminently acc
 * Credentials: apiKey
 
 ## How to get credentials: 
-*You do not need to authenticate in order to explore the NASA data.*
+**You do not need to authenticate in order to explore the NASA data.**
 However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a [NASA developer key](https://api.nasa.gov/index.html#apply-for-an-api-key).
 
 ## TOC: 
