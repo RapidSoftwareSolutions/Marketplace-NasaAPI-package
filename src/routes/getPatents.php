@@ -14,6 +14,17 @@ $app->post('/api/NasaAPI/getPatents', function ($request, $response, $args) {
         $post_data = json_decode($data, true);
     }
     
+    if(json_last_error() != 0) {
+        $error[] = json_last_error_msg() . '. Incorrect input JSON. Please, check fields with JSON input.';
+    }
+    
+    if(!empty($error)) {
+        $result['callback'] = 'error';
+        $result['contextWrites']['to']['status_code'] = 'JSON_VALIDATION';
+        $result['contextWrites']['to']['status_msg'] = implode(',', $error);
+        return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
+    }
+    
     $query_str = 'https://api.nasa.gov/patents/content';
     
     $body = [];
@@ -47,26 +58,40 @@ $app->post('/api/NasaAPI/getPatents', function ($request, $response, $args) {
             $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
         } else {
             $result['callback'] = 'error';
-            $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
+            $result['contextWrites']['to']['status_code'] = 'API_ERROR';
+            $result['contextWrites']['to']['status_msg'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
         }
 
     } catch (\GuzzleHttp\Exception\ClientException $exception) {
 
-        $responseBody = $exception->getResponse()->getBody();
+        $responseBody = $exception->getResponse()->getBody()->getContents();
+        if(empty(json_decode($responseBody))) {
+            $out = $responseBody;
+        } else {
+            $out = json_decode($responseBody);
+        }
         $result['callback'] = 'error';
-        $result['contextWrites']['to'] = json_decode($responseBody);
+        $result['contextWrites']['to']['status_code'] = 'API_ERROR';
+        $result['contextWrites']['to']['status_msg'] = $out;
 
     } catch (GuzzleHttp\Exception\ServerException $exception) {
 
+        $responseBody = $exception->getResponse()->getBody()->getContents();
+        if(empty(json_decode($responseBody))) {
+            $out = $responseBody;
+        } else {
+            $out = json_decode($responseBody);
+        }
+        $result['callback'] = 'error';
+        $result['contextWrites']['to']['status_code'] = 'API_ERROR';
+        $result['contextWrites']['to']['status_msg'] = $out;
+
+    } catch (GuzzleHttp\Exception\ConnectException $exception) {
+
         $responseBody = $exception->getResponse()->getBody(true);
         $result['callback'] = 'error';
-        $result['contextWrites']['to'] = json_decode($responseBody);
-
-    } catch (GuzzleHttp\Exception\BadResponseException $exception) {
-
-        $responseBody = $exception->getResponse()->getBody(true);
-        $result['callback'] = 'error';
-        $result['contextWrites']['to'] = json_decode($responseBody);
+        $result['contextWrites']['to']['status_code'] = 'INTERNAL_PACKAGE_ERROR';
+        $result['contextWrites']['to']['status_msg'] = 'Something went wrong inside the package.';
 
     }
     

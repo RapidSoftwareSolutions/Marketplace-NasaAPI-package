@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Functional;
+namespace Test\Functional;
 
 class NasaAPITest extends BaseTestCase {
     

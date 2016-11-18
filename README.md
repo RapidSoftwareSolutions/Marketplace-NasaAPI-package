@@ -30,7 +30,7 @@ This endpoint structures the APOD imagery and associated metadata so that it can
 | Field         | Type       | Description
 |---------------|------------|----------
 | apiKey        | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
-| date          | String     | Optional: The date of the APOD image to retrieve. Default "today".
+| date          | String     | Optional: The date of the APOD image to retrieve. Format: YYYY-MM-DD. Default "today".
 | highResolution| String     | Optional: Retrieve the URL for the high resolution image. Default false.
 
 <a name="getClosestAsteroids"/>
@@ -40,8 +40,8 @@ Retrieve a list of Asteroids based on their closest approach date to Earth.
 | Field    | Type       | Description
 |----------|------------|----------
 | apiKey   | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
-| startDate| String     | Optional: Starting date for asteroid search. Default: "today"
-| endDate  | String     | Optional: Ending date for asteroid search. Default: 7 days after startDate.
+| startDate| String     | Optional: Starting date for asteroid search. Format: YYYY-MM-DD. Default: "today"
+| endDate  | String     | Optional: Ending date for asteroid search. Format: YYYY-MM-DD. Default: 7 days after startDate.
 
 <a name="getSingleAsteroid"/>
 ## NasaAPI.getSingleAsteroid
@@ -77,7 +77,7 @@ Retieve a paginated list of Near Earth Objects.
 | Field         | Type       | Description
 |---------------|------------|----------
 | apiKey        | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
-| date          | String     | Optional: Retrieve matadata for all imagery available for a given date.
+| date          | String     | Optional: Retrieve matadata for all imagery available for a given date. Format: YYYY-MM-DD.
 | availableDates| String     | Optional: Retrieve a listing of all dates with available imagery.
 
 <a name="getPatents"/>
@@ -111,7 +111,7 @@ This endpoint retrieves the Landsat 8 image for the supplied location and date. 
 | latitude  | String     | Required: Latitude.
 | longitude | String     | Required: Longitude.
 | dimension | String     | Optional: width and height of image in degrees.
-| date      | String     | Optional: date of image; if not supplied, then the most recent image (i.e., closest to today) is returned.
+| date      | String     | Optional: date of image; if not supplied, then the most recent image (i.e., closest to today) is returned. Format: YYYY-MM-DD.
 | cloudScore| String     | Optional: calculate the percentage of the image covered by clouds. Default false.
 
 <a name="getEarthAssets"/>
@@ -123,8 +123,8 @@ This endpoint retrieves the date-times and asset names for available imagery for
 | apiKey   | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
 | latitude | String     | Required: Latitude.
 | longitude| String     | Required: Longitude.
-| begin    | String     | Optional: beginning of date range.
-| end      | String     | Optional: end of date range.
+| begin    | String     | Optional: beginning of date range. Format: YYYY-MM-DD.
+| end      | String     | Optional: end of date range. Format: YYYY-MM-DD.
 
 <a name="getMarsRoverPhotos"/>
 ## NasaAPI.getMarsRoverPhotos
