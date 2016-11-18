@@ -63,6 +63,11 @@ $app->post('/api/NasaAPI/getEPICEarthImagery', function ($request, $response, $a
             } else {
                 $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
             }
+            if(empty($result['contextWrites']['to'])) {
+                $result['callback'] = 'error';
+                $result['contextWrites']['to']['status_code'] = 'API_ERROR';
+                $result['contextWrites']['to']['status_msg'] = "Not found. Check request parameters.";
+            }
         } else {
             $result['callback'] = 'error';
             $result['contextWrites']['to']['status_code'] = 'API_ERROR';
