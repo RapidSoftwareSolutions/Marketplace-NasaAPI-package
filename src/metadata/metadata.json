@@ -1,484 +1,412 @@
 {
-  "package": "NasaAPI",
-  "tagline": "NASA API Wrapper",
-  "description": "The objective of this API is to make NASA data, including imagery, eminently accessible to application developers.",
-  "image": "http://logo.clearbit.com/nasa.gov",
-  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-NasaAPI-package",
-  "accounts": {
-    "domain": "nasa.gov",
-    "credentials": [
-      "apiKey"
-    ]
-  },
-  "blocks": [
-    {
-      "name": "getPictureOfTheDay",
-      "description": "This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications. In addition, if the concept_tags parameter is set to True, then keywords derived from the image explanation are returned.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "date",
-          "type": "String",
-          "info": "Optional: The date of the APOD image to retrieve. Format: YYYY-MM-DD. Default \"today\"."
-        },
-        {
-          "name": "highResolution",
-          "type": "String",
-          "info": "Optional: Retrieve the URL for the high resolution image. Default false."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
+    "package": "NasaAPI",
+    "tagline": "NASA API Wrapper",
+    "description": "Get NASA's collection of asteroids and space pictures.",
+    "image": "http:\/\/logo.clearbit.com\/nasa.gov",
+    "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-NasaAPI-package",
+    "keywords": ["API", "asteroid", "government", "nasa", "science", "space"],
+    "accounts": {
+        "domain": "nasa.gov",
+        "credentials": ["apiKey"]
     },
-    {
-      "name": "getClosestAsteroids",
-      "description": "Retrieve a list of Asteroids based on their closest approach date to Earth.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "startDate",
-          "type": "String",
-          "info": "Optional: Starting date for asteroid search. Format: YYYY-MM-DD. Default: \"today\""
-        },
-        {
-          "name": "endDate",
-          "type": "String",
-          "info": "Optional: Ending date for asteroid search. Format: YYYY-MM-DD. Default: 7 days after startDate."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleAsteroid",
-      "description": "Lookup a specific Asteroid based on its NASA JPL small body (SPK-ID) ID.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "asteroidId",
-          "type": "String",
-          "info": "Optional: Asteroid SPK-ID correlates to the NASA JPL small body."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getAsteroidStats",
-      "description": "Get the Near Earth Object data set totals.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getAsteroids",
-      "description": "Retieve a paginated list of Near Earth Objects.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "page",
-          "type": "String",
-          "info": "Optional: The page number of the results. Default: 0"
-        },
-        {
-          "name": "size",
-          "type": "String",
-          "info": "Optional: The number of returned results per page. Default: 20"
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getEPICEarthImagery",
-      "description": "Retieve a paginated list of Near Earth Objects.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "date",
-          "type": "String",
-          "info": "Optional: Retrieve matadata for all imagery available for a given date. Format: YYYY-MM-DD."
-        },
-        {
-          "name": "availableDates",
-          "type": "String",
-          "info": "Optional: Retrieve a listing of all dates with available imagery."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getPatents",
-      "description": "This endpoint provides structured, searchable developer access to NASA’s patents that have been curated to support technology transfer.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "query",
-          "type": "String",
-          "info": "Optional: Search text to filter results."
-        },
-        {
-          "name": "conceptTags",
-          "type": "String",
-          "info": "Optional: Return an ordered dictionary of concepts from the patent abstract."
-        },
-        {
-          "name": "limit",
-          "type": "String",
-          "info": "Optional: number of patents to return."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSpaceSounds",
-      "description": "This endpoint provides a series of space sounds via sound cloud.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "query",
-          "type": "String",
-          "info": "Optional: Search text to filter results."
-        },
-        {
-          "name": "limit",
-          "type": "String",
-          "info": "Optional: number of patents to return."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getEarthImagery",
-      "description": "This endpoint retrieves the Landsat 8 image for the supplied location and date. The response will include the date and URL to the image that is closest to the supplied date.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "latitude",
-          "type": "String",
-          "info": "Required: Latitude."
-        },
-        {
-          "name": "longitude",
-          "type": "String",
-          "info": "Required: Longitude."
-        },
-        {
-          "name": "dimension",
-          "type": "String",
-          "info": "Optional: width and height of image in degrees. Default 0.025."
-        },
-        {
-          "name": "date",
-          "type": "String",
-          "info": "Optional: date of image; if not supplied, then the most recent image (i.e., closest to today) is returned. Format: YYYY-MM-DD."
-        },
-        {
-          "name": "cloudScore",
-          "type": "String",
-          "info": "Optional: calculate the percentage of the image covered by clouds. Default false."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getEarthAssets",
-      "description": "This endpoint retrieves the date-times and asset names for available imagery for a supplied location.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "latitude",
-          "type": "String",
-          "info": "Required: Latitude."
-        },
-        {
-          "name": "longitude",
-          "type": "String",
-          "info": "Required: Longitude."
-        },
-        {
-          "name": "begin",
-          "type": "String",
-          "info": "Optional: beginning of date range. Format: YYYY-MM-DD."
-        },
-        {
-          "name": "end",
-          "type": "String",
-          "info": "Optional: end of date range. Format: YYYY-MM-DD. Default \"today\"."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getMarsRoverPhotos",
-      "description": "This API is designed to collect image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers, educators, and citizen scientists.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "sol",
-          "type": "String",
-          "info": "Optional: sol (ranges from 0 to max found in endpoint)."
-        },
-        {
-          "name": "camera",
-          "type": "String",
-          "info": "Optional: Abbreviation of the camera."
-        },
-        {
-          "name": "page",
-          "type": "String",
-          "info": "Optional: The page number. 25 items per page returned."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getEONETEvents",
-      "description": "This method returns most recent EONET (Earth Observatory Natural Event Tracker) events.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "source",
-          "type": "String",
-          "info": "Optional: Filter the returned events by the Source. Multiple sources can be included in the parameter: comma separated, operates as a boolean OR."
-        },
-        {
-          "name": "status",
-          "type": "String",
-          "info": "Optional: Events that have ended are assigned a closed date and the existence of that date will allow you to filter for only-open or only-closed events. Omitting the status parameter will return only the currently open events."
-        },
-        {
-          "name": "days",
-          "type": "String",
-          "info": "Optional: Limit the number of prior days (including today) from which events will be returned."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getEONETCategories",
-      "description": "This method returns EONET (Earth Observatory Natural Event Tracker) categories.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "categoryId",
-          "type": "String",
-          "info": "Optional: Filter the returned events by the Category."
-        },
-        {
-          "name": "source",
-          "type": "String",
-          "info": "Optional: Filter the returned events by the Source. Multiple sources can be included in the parameter: comma separated, operates as a boolean OR."
-        },
-        {
-          "name": "status",
-          "type": "String",
-          "info": "Optional: Events that have ended are assigned a closed date and the existence of that date will allow you to filter for only-open or only-closed events. Omitting the status parameter will return only the currently open events."
-        },
-        {
-          "name": "limit",
-          "type": "String",
-          "info": "Optional: LLimits the number of events returned."
-        },
-        {
-          "name": "days",
-          "type": "String",
-          "info": "Optional: Limit the number of prior days (including today) from which events will be returned."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getEONETLayers",
-      "description": "This endpoint is a reference to a specific web service (e.g., WMS, WMTS) that can be used to produce imagery of a particular NASA data parameter. Layers are mapped to categories within EONET in order to provide a category-specific list of layers (e.g., the 'Volcanoes' category is mapped to layers that can provide imagery in true color, SO2, aerosols, etc.). ",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "credentials",
-          "info": "Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key."
-        },
-        {
-          "name": "categoryId",
-          "type": "String",
-          "info": "Optional: Filter the returned events by the Category."
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    }
-  ]
+    "blocks": [{
+            "name": "getPictureOfTheDay",
+            "description": "This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications. In addition, if the concept_tags parameter is set to True, then keywords derived from the image explanation are returned.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "date",
+                    "type": "String",
+                    "info": "The date of the APOD image to retrieve. Format: YYYY-MM-DD. Default \"today\".",
+                    "required": false
+                }, {
+                    "name": "highResolution",
+                    "type": "String",
+                    "info": "Retrieve the URL for the high resolution image. Default false.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getClosestAsteroids",
+            "description": "Retrieve a list of Asteroids based on their closest approach date to Earth.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "startDate",
+                    "type": "String",
+                    "info": "Starting date for asteroid search. Format: YYYY-MM-DD. Default: \"today\"",
+                    "required": false
+                }, {
+                    "name": "endDate",
+                    "type": "String",
+                    "info": "Ending date for asteroid search. Format: YYYY-MM-DD. Default: 7 days after startDate.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getSingleAsteroid",
+            "description": "Lookup a specific Asteroid based on its NASA JPL small body (SPK-ID) ID.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "asteroidId",
+                    "type": "String",
+                    "info": "Asteroid SPK-ID correlates to the NASA JPL small body.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getAsteroidStats",
+            "description": "Get the Near Earth Object data set totals.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getAsteroids",
+            "description": "Retieve a paginated list of Near Earth Objects.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "page",
+                    "type": "String",
+                    "info": "The page number of the results. Default: 0",
+                    "required": false
+                }, {
+                    "name": "size",
+                    "type": "String",
+                    "info": "The number of returned results per page. Default: 20",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getEPICEarthImagery",
+            "description": "Retieve a paginated list of Near Earth Objects.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "date",
+                    "type": "String",
+                    "info": "Retrieve matadata for all imagery available for a given date. Format: YYYY-MM-DD.",
+                    "required": false
+                }, {
+                    "name": "availableDates",
+                    "type": "String",
+                    "info": "Retrieve a listing of all dates with available imagery.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getPatents",
+            "description": "This endpoint provides structured, searchable developer access to NASA\u2019s patents that have been curated to support technology transfer.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "query",
+                    "type": "String",
+                    "info": "Search text to filter results.",
+                    "required": false
+                }, {
+                    "name": "conceptTags",
+                    "type": "String",
+                    "info": "Return an ordered dictionary of concepts from the patent abstract.",
+                    "required": false
+                }, {
+                    "name": "limit",
+                    "type": "String",
+                    "info": "number of patents to return.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getSpaceSounds",
+            "description": "This endpoint provides a series of space sounds via sound cloud.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "query",
+                    "type": "String",
+                    "info": "Search text to filter results.",
+                    "required": false
+                }, {
+                    "name": "limit",
+                    "type": "String",
+                    "info": "number of patents to return.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getEarthImagery",
+            "description": "This endpoint retrieves the Landsat 8 image for the supplied location and date. The response will include the date and URL to the image that is closest to the supplied date.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "latitude",
+                    "type": "String",
+                    "info": "Latitude.",
+                    "required": true
+                }, {
+                    "name": "longitude",
+                    "type": "String",
+                    "info": "Longitude.",
+                    "required": true
+                }, {
+                    "name": "dimension",
+                    "type": "String",
+                    "info": "width and height of image in degrees. Default 0.025.",
+                    "required": false
+                }, {
+                    "name": "date",
+                    "type": "String",
+                    "info": "date of image; if not supplied, then the most recent image (i.e., closest to today) is returned. Format: YYYY-MM-DD.",
+                    "required": false
+                }, {
+                    "name": "cloudScore",
+                    "type": "String",
+                    "info": "calculate the percentage of the image covered by clouds. Default false.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getEarthAssets",
+            "description": "This endpoint retrieves the date-times and asset names for available imagery for a supplied location.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "latitude",
+                    "type": "String",
+                    "info": "Latitude.",
+                    "required": true
+                }, {
+                    "name": "longitude",
+                    "type": "String",
+                    "info": "Longitude.",
+                    "required": true
+                }, {
+                    "name": "begin",
+                    "type": "String",
+                    "info": "beginning of date range. Format: YYYY-MM-DD.",
+                    "required": false
+                }, {
+                    "name": "end",
+                    "type": "String",
+                    "info": "end of date range. Format: YYYY-MM-DD. Default \"today\".",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getMarsRoverPhotos",
+            "description": "This API is designed to collect image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers, educators, and citizen scientists.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "sol",
+                    "type": "String",
+                    "info": "sol (ranges from 0 to max found in endpoint).",
+                    "required": false
+                }, {
+                    "name": "camera",
+                    "type": "String",
+                    "info": "Abbreviation of the camera.",
+                    "required": false
+                }, {
+                    "name": "page",
+                    "type": "String",
+                    "info": "The page number. 25 items per page returned.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getEONETEvents",
+            "description": "This method returns most recent EONET (Earth Observatory Natural Event Tracker) events.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "source",
+                    "type": "String",
+                    "info": "Filter the returned events by the Source. Multiple sources can be included in the parameter: comma separated, operates as a boolean OR.",
+                    "required": false
+                }, {
+                    "name": "status",
+                    "type": "String",
+                    "info": "Events that have ended are assigned a closed date and the existence of that date will allow you to filter for only-open or only-closed events. Omitting the status parameter will return only the currently open events.",
+                    "required": false
+                }, {
+                    "name": "days",
+                    "type": "String",
+                    "info": "Limit the number of prior days (including today) from which events will be returned.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getEONETCategories",
+            "description": "This method returns EONET (Earth Observatory Natural Event Tracker) categories.",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "categoryId",
+                    "type": "String",
+                    "info": "Filter the returned events by the Category.",
+                    "required": false
+                }, {
+                    "name": "source",
+                    "type": "String",
+                    "info": "Filter the returned events by the Source. Multiple sources can be included in the parameter: comma separated, operates as a boolean OR.",
+                    "required": false
+                }, {
+                    "name": "status",
+                    "type": "String",
+                    "info": "Events that have ended are assigned a closed date and the existence of that date will allow you to filter for only-open or only-closed events. Omitting the status parameter will return only the currently open events.",
+                    "required": false
+                }, {
+                    "name": "limit",
+                    "type": "String",
+                    "info": "Limits the number of events returned.",
+                    "required": false
+                }, {
+                    "name": "days",
+                    "type": "String",
+                    "info": "Limit the number of prior days (including today) from which events will be returned.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getEONETLayers",
+            "description": "This endpoint is a reference to a specific web service (e.g., WMS, WMTS) that can be used to produce imagery of a particular NASA data parameter. Layers are mapped to categories within EONET in order to provide a category-specific list of layers (e.g., the 'Volcanoes' category is mapped to layers that can provide imagery in true color, SO2, aerosols, etc.). ",
+            "args": [{
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
+                    "required": false
+                }, {
+                    "name": "categoryId",
+                    "type": "String",
+                    "info": "Filter the returned events by the Category.",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }]
 }
