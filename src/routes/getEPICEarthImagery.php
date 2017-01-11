@@ -25,7 +25,7 @@ $app->post('/api/NasaAPI/getEPICEarthImagery', function ($request, $response, $a
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
     }
     
-    $query_str = 'https://api.nasa.gov/EPIC/api/v1.0/natural';
+    $query_str = 'https://api.nasa.gov/EPIC/api/natural';
     
     $body = [];
     if(empty($post_data['args']['apiKey'])) {
