@@ -9,13 +9,23 @@ Get NASA's collection of asteroids and space pictures.
 **You do not need to authenticate in order to explore the NASA data.**
 However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a [NASA developer key](https://api.nasa.gov/index.html#apply-for-an-api-key).
 
+## Custom datatypes: 
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]``` 
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+ 
+
 ## NasaAPI.getPictureOfTheDay
 This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications. In addition, if the concept_tags parameter is set to True, then keywords derived from the image explanation are returned.
 
 | Field         | Type       | Description
 |---------------|------------|----------
 | apiKey        | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
-| date          | String     | Optional: The date of the APOD image to retrieve. Format: YYYY-MM-DD. Default "today".
+| date          | Datepicker | Optional: The date of the APOD image to retrieve. Format: YYYY-MM-DD. Default "today".
 | highResolution| String     | Optional: Retrieve the URL for the high resolution image. Default false.
 
 ## NasaAPI.getClosestAsteroids
@@ -24,8 +34,8 @@ Retrieve a list of Asteroids based on their closest approach date to Earth.
 | Field    | Type       | Description
 |----------|------------|----------
 | apiKey   | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
-| startDate| String     | Optional: Starting date for asteroid search. Format: YYYY-MM-DD. Default: "today"
-| endDate  | String     | Optional: Ending date for asteroid search. Format: YYYY-MM-DD. Default: 7 days after startDate.
+| startDate| Datepicker | Optional: Starting date for asteroid search. Format: YYYY-MM-DD. Default: "today"
+| endDate  | DatePicker | Optional: Ending date for asteroid search. Format: YYYY-MM-DD. Default: 7 days after startDate.
 
 ## NasaAPI.getSingleAsteroid
 Lookup a specific Asteroid based on its NASA JPL small body (SPK-ID) ID.
@@ -57,7 +67,7 @@ Retieve a paginated list of Near Earth Objects.
 | Field         | Type       | Description
 |---------------|------------|----------
 | apiKey        | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
-| date          | String     | Optional: Retrieve matadata for all imagery available for a given date. Format: YYYY-MM-DD.
+| date          | Datepicker     | Optional: Retrieve matadata for all imagery available for a given date. Format: YYYY-MM-DD.
 | availableDates| String     | Optional: Retrieve a listing of all dates with available imagery.
 
 ## NasaAPI.getPatents
@@ -85,10 +95,9 @@ This endpoint retrieves the Landsat 8 image for the supplied location and date. 
 | Field     | Type       | Description
 |-----------|------------|----------
 | apiKey    | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
-| latitude  | String     | Required: Latitude.
-| longitude | String     | Required: Longitude.
+| coordinate  | Map     | Required: Latitude and longitude coma separated.
 | dimension | String     | Optional: width and height of image in degrees.
-| date      | String     | Optional: date of image; if not supplied, then the most recent image (i.e., closest to today) is returned. Format: YYYY-MM-DD.
+| date      | Datepicker     | Optional: date of image; if not supplied, then the most recent image (i.e., closest to today) is returned. Format: YYYY-MM-DD.
 | cloudScore| String     | Optional: calculate the percentage of the image covered by clouds. Default false.
 
 ## NasaAPI.getEarthAssets
@@ -97,10 +106,9 @@ This endpoint retrieves the date-times and asset names for available imagery for
 | Field    | Type       | Description
 |----------|------------|----------
 | apiKey   | credentials| Optional: Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.
-| latitude | String     | Required: Latitude.
-| longitude| String     | Required: Longitude.
-| begin    | String     | Optional: beginning of date range. Format: YYYY-MM-DD.
-| end      | String     | Optional: end of date range. Format: YYYY-MM-DD.
+| coordinate  | Map     | Required: Latitude and longitude coma separated.
+| begin    | Datepicker     | Optional: beginning of date range. Format: YYYY-MM-DD.
+| end      | Datepicker     | Optional: end of date range. Format: YYYY-MM-DD.
 
 ## NasaAPI.getMarsRoverPhotos
 This API is designed to collect image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers, educators, and citizen scientists.

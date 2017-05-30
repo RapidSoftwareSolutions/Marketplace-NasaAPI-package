@@ -34,10 +34,12 @@ $app->post('/api/NasaAPI/getClosestAsteroids', function ($request, $response, $a
         $body['api_key'] = $post_data['args']['apiKey'];
     }
     if(!empty($post_data['args']['startDate'])) {
-        $body['start_date'] = $post_data['args']['startDate'];
+        $dateTime = new DateTime($post_data['args']['startDate']);
+        $body['start_date'] = $dateTime->format('Y-m-d');
     }
     if(!empty($post_data['args']['endDate'])) {
-        $body['end_date'] = $post_data['args']['endDate'];
+        $dateTime = new DateTime($post_data['args']['endDate']);
+        $body['end_date'] = $dateTime->format('Y-m-d');
     }
    
     $client = $this->httpClient;

@@ -42,19 +42,27 @@ $app->post('/api/NasaAPI/getEarthAssets', function ($request, $response, $args) 
     }
     
     $query_str = 'https://api.nasa.gov/planetary/earth/assets';
-    
-    $body['lat'] = $post_data['args']['latitude'];
-    $body['lon'] = $post_data['args']['longitude'];
+
+    if (!empty($post_data['args']['coordinate'])) {
+        $body['lat'] = explode(',', $post_data['args']['coordinate'])[0];
+        $body['lon'] = explode(',', $post_data['args']['coordinate'])[1];
+    } else {
+        $body['lat'] = $post_data['args']['latitude'];
+        $body['lon'] = $post_data['args']['longitude'];
+    }
+
     if(empty($post_data['args']['apiKey'])) {
         $body['api_key'] = 'DEMO_KEY';
     } else {
         $body['api_key'] = $post_data['args']['apiKey'];
     }
     if(!empty($post_data['args']['begin'])) {
-        $body['begin'] = $post_data['args']['begin'];
+        $dateTime = new DateTime($post_data['args']['begin']);
+        $body['begin'] = $dateTime->format('Y-m-d');
     }
     if(!empty($post_data['args']['end'])) {
-        $body['end'] = $post_data['args']['end'];
+        $dateTime = new DateTime($post_data['args']['end']);
+        $body['end'] = $dateTime->format('Y-m-d');
     }
    
     $client = $this->httpClient;

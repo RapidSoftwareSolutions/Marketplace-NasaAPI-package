@@ -34,7 +34,8 @@ $app->post('/api/NasaAPI/getEPICEarthImagery', function ($request, $response, $a
         $body['api_key'] = $post_data['args']['apiKey'];
     }
     if(!empty($post_data['args']['date'])) {
-        $body['date'] = $post_data['args']['date'];
+        $dateTime = new DateTime($post_data['args']['date']);
+        $body['date'] = $dateTime->format('Y-m-d');
     }
     if(!empty($post_data['args']['availableDates'])) {
         $body['available_dates'] = $post_data['args']['availableDates'];
