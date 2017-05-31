@@ -31,7 +31,7 @@
         },
         {
           "name": "date",
-          "type": "Datepicker",
+          "type": "DatePicker",
           "info": "The date of the APOD image to retrieve. Format: YYYY-MM-DD. Default \"today\".",
           "required": false
         },
@@ -65,13 +65,13 @@
         },
         {
           "name": "startDate",
-          "type": "Datepicker",
+          "type": "DatePicker",
           "info": "Starting date for asteroid search. Format: YYYY-MM-DD. Default: \"today\"",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "Datepicker",
+          "type": "DatePicker",
           "info": "Ending date for asteroid search. Format: YYYY-MM-DD. Default: 7 days after startDate.",
           "required": false
         }
@@ -343,13 +343,13 @@
         },
         {
           "name": "begin",
-          "type": "Datepicker",
+          "type": "DatePicker",
           "info": "beginning of date range. Format: YYYY-MM-DD.",
           "required": false
         },
         {
           "name": "end",
-          "type": "Datepicker",
+          "type": "DatePicker",
           "info": "end of date range. Format: YYYY-MM-DD. Default \"today\".",
           "required": false
         }
