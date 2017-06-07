@@ -26,7 +26,7 @@ $app->post('/api/NasaAPI/getEarthAssets', function ($request, $response, $args) 
     }
 
     $error = [];
-    if (empty($post_data['args']['coordinate']) || (empty($post_data['args']['latitude']) && empty($post_data['args']['longitude']))) {
+    if (empty($post_data['args']['coordinate']) && (empty($post_data['args']['latitude']) || empty($post_data['args']['longitude']))) {
         $error[] = 'coordinate';
     }
 
