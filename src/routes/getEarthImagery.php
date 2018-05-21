@@ -36,7 +36,7 @@ $app->post('/api/NasaAPI/getEarthImagery', function ($request, $response, $args)
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
     }
 
-    $query_str = 'https://api.nasa.gov/planetary/earth/imagery';
+    $query_str = 'https://api.nasa.gov/planetary/earth/imagery/';
 
     if (!empty($post_data['args']['coordinate'])) {
         $body['lat'] = explode(',', $post_data['args']['coordinate'])[0];
