@@ -6,8 +6,6 @@ $routes = [
     'getAsteroidStats',
     'getAsteroids',
     'getEPICEarthImagery',
-    'getPatents',
-    'getSpaceSounds',
     'getEarthImagery',
     'getEarthAssets',
     'getMarsRoverPhotos',

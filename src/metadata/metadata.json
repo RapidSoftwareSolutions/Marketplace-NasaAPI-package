@@ -105,7 +105,7 @@
           "name": "asteroidId",
           "type": "String",
           "info": "Asteroid SPK-ID correlates to the NASA JPL small body.",
-          "required": false
+          "required": true
         }
       ],
       "callbacks": [
@@ -195,80 +195,6 @@
           "name": "availableDates",
           "type": "String",
           "info": "Retrieve a listing of all dates with available imagery.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getPatents",
-      "description": "This endpoint provides structured, searchable developer access to NASA\u2019s patents that have been curated to support technology transfer.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "String",
-          "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
-          "required": false
-        },
-        {
-          "name": "query",
-          "type": "String",
-          "info": "Search text to filter results.",
-          "required": false
-        },
-        {
-          "name": "conceptTags",
-          "type": "String",
-          "info": "Return an ordered dictionary of concepts from the patent abstract.",
-          "required": false
-        },
-        {
-          "name": "limit",
-          "type": "String",
-          "info": "number of patents to return.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSpaceSounds",
-      "description": "This endpoint provides a series of space sounds via sound cloud.",
-      "args": [
-        {
-          "name": "apiKey",
-          "type": "String",
-          "info": "Your ApiKey obtained from NASA for expanded usage. You do not need to authenticate in order to explore the NASA data. However, if you will be intensively using the APIs to, say, support a mobile application, then you should sign up for a NASA developer key.",
-          "required": false
-        },
-        {
-          "name": "query",
-          "type": "String",
-          "info": "Search text to filter results.",
-          "required": false
-        },
-        {
-          "name": "limit",
-          "type": "String",
-          "info": "number of patents to return.",
           "required": false
         }
       ],
